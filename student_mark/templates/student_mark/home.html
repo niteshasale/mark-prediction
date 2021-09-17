@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+<style>
+	*{
+	margin: 0;
+}
+body{
+	
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(-45deg,#c3e3ec 20%,#d6e8ec 20% 50%,#cbdfec 50% 80%,#d7e0e4 80%);
+	background-attachment: fixed;
+	background-size: 100%;
+	
+}
+.head_div {margin:0;
+  padding: 0;
+  background:rgba(255,255,255,.4);
+  box-shadow: 0 5px 5px rgba(0,0,0,.2);
+  height:20vh;
+  display: grid;
+}
+.middel_div {
+	margin-top:10vh;
+	border-radius: 20px;
+  background:rgba(255,255,255,.4);
+  box-shadow: 0 5px 5px rgba(0,0,0,.2);
+  height:45vh;
+
+}
+.footer_div {
+	margin-top:20vh;
+  background:rgba(0,0,0,.5);
+  height:10vh;
+  width:100%;
+
+}
+</style>
+<body>
+<div class="head_div">
+		<h2 class="text-center text-success">Machine Learning Model</h2>
+		<h3 class="text-center"style="color:orange">Student Marks Predictations...!</h3>
+</div>
+<div class="container-fluid">
+	<div class="row">
+			<div class="col-sm-4"></div>
+
+			<div class="text-center col-sm-4 mx-auto middel_div">
+				<form method="POST"action="{%url 'predict'%}" novalidate>
+					{%csrf_token%}
+					<label class="text-primary label-control"style="margin-top:5vh;"s>***Enter Your Study Hours To Predict Marks***</label>
+					
+					<input type="number"name="number" min=1 max=8 required 
+					class="form-control"style="margin-top: 5vh;	width:50%;float:left;margin-left: 25%"placeholder="Enter Hours"><br>
+
+					<input type="submit" name="submit" class="btn btn-sm btn-success" 
+					value="Predict Marks"style="width:50%;margin-top: 5vh;float:left;margin-left: 25%">
+				</form>															
+			
+			{%if output%}
+			<label style="color:orange	;margin-top:5vh;">
+				You will get <span style="color:red"><u>{{output}}%</u></span> marks, when you do study 
+				<span style="color:red"><u>{{number}}</u></span> hours per day.</label>
+			{%endif%}
+			</div>
+	
+
+
+	</div>
+</div>
+<div class="footer_div text-center"style="
+                                          margin-top:30vh;
+                                          background:black;
+                                          height:10vh;
+                                          width:100%;
+                                          ">
+  <p style="color:white;font-style: italic;padding:15px;">©Copyright
+        <span>Mark Prediction Model Deployment</span> |
+        <span>Designed & Developed By niteshasale358@gmail.com</span></p>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
